@@ -3,7 +3,7 @@ import { cn } from "../../utils/cn";
 
 interface FlexColumn {
 	children: ReactNode;
-	className?: String;
+	className?: string;
 	htmlProps?: Partial<HTMLProps<HTMLDivElement>>;
 }
 export default function FlexColumn({
