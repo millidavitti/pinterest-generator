@@ -9,3 +9,5 @@ type ImageURL = {
 };
 
 export const image_url_jotai = atom<ImageURL>({ top: null, bottom: null });
+
+export const topics_jotai = atom<string[]>([]);
