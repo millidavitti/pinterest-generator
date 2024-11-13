@@ -13,7 +13,10 @@ export default function FlexColumn({
 }: FlexColumn) {
 	return (
 		<div
-			className={cn("flex flex-col overflow-y-auto", className)}
+			className={cn(
+				"flex flex-col outline-1 overflow-y-auto bg-light-surface-surface-container-lowest rounded-lg",
+				className,
+			)}
 			{...htmlProps}
 		>
 			{children}
