@@ -5,7 +5,7 @@ import BottomImage from "./bottom-image";
 
 export default function UploadedImages() {
 	return (
-		<FlexColumn className='h-full w-full p-3 gap-3'>
+		<FlexColumn className='h-full w-full p-3 gap-3 shrink-0'>
 			<ImagesHeader />
 			<TopImage />
 			<BottomImage />

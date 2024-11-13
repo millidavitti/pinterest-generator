@@ -9,7 +9,7 @@ import BottomPreview from "./bottom-preview";
 export default function PinPreview() {
 	const image_url = useAtomValue(image_url_jotai);
 	return (
-		<FlexColumn className='h-full w-full p-3 gap-3'>
+		<FlexColumn className='h-full w-[750px] p-3 gap-3'>
 			{/* Header */}
 			<FlexRow className='shrink-0 p-3'>
 				<h3 className='text-xl font-semibold'>Pin Preview</h3>
