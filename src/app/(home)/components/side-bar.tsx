@@ -9,8 +9,8 @@ export default function SideBar() {
 		<FlexColumn className='w-[500px] gap-3 bg-light-surface-surface-container-lowest'>
 			<FlexColumn className='gap-3 p-3'>
 				<SchedulePost />
-				<AddTopic />
 				<SearchTopic />
+				<AddTopic />
 				<Topics />
 			</FlexColumn>
 		</FlexColumn>
