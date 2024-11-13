@@ -5,7 +5,7 @@ export default function BottomImage() {
 	return (
 		<FlexColumn className='p-3 h-full gap-3'>
 			<h2 className='text-lg'>Bottom Image</h2>
-			<CaptureImage />
+			<CaptureImage position='bottom' />
 		</FlexColumn>
 	);
 }
