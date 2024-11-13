@@ -1,11 +1,12 @@
 import FlexRow from "@/components/layouts/flex_row";
 import { checkOverflow } from "@/utils/check-overflow";
+import { Dispatch, RefObject, SetStateAction } from "react";
 
 interface TextBox {
 	question: string;
-	textBoxRef: any;
+	textBoxRef: RefObject<HTMLDivElement>;
 	fontSize: number;
-	setFontSize: any;
+	setFontSize: Dispatch<SetStateAction<number>>;
 }
 export default function TextBox({
 	question,
