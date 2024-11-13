@@ -2,7 +2,7 @@
 import FlexColumn from "@/components/layouts/flex_col";
 import { ImageURLKeys } from "@/data/app";
 import useCaptureImageInterface from "@/hooks/interface/use-capture-image-interface";
-import { Image } from "lucide-react";
+import { Image as ImageIcon } from "lucide-react";
 interface CaptureImage {
 	position: ImageURLKeys;
 }
@@ -48,7 +48,7 @@ export default function CaptureImage({ position }: CaptureImage) {
 					},
 				}}
 			>
-				<Image className='stroke-light-surface-on-surface' />
+				<ImageIcon className='stroke-light-surface-on-surface' />
 				<p>
 					Drag and Drop File or{" "}
 					<span
