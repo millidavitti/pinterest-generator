@@ -8,7 +8,10 @@ interface FlexRow {
 export default function FlexRow({ children, className, htmlProps }: FlexRow) {
 	return (
 		<div
-			className={cn("flex flex-row overflow-x-auto", className)}
+			className={cn(
+				"flex flex-row outline-1 overflow-x-auto bg-light-surface-surface-container-lowest rounded-lg",
+				className,
+			)}
 			{...htmlProps}
 		>
 			{children}
