@@ -3,7 +3,8 @@ import FlexColumn from "@/components/layouts/flex_col";
 import FlexRow from "@/components/layouts/flex_row";
 import { image_url_jotai } from "@/data/app";
 import { useAtomValue } from "jotai";
-import Image from "next/image";
+import TopPreview from "./top-preview";
+import BottomPreview from "./bottom-preview";
 
 export default function PinPreview() {
 	const image_url = useAtomValue(image_url_jotai);
@@ -17,22 +18,8 @@ export default function PinPreview() {
 			<FlexColumn className='h-full rounded-none'>
 				{/* Pin */}
 				<FlexColumn className='outline h-full rounded-none'>
-					<FlexRow className='h-full rounded-none border-b-4 border-white bg-light-surface'>
-						<Image
-							alt=''
-							src={image_url.top! || "/file.svg"}
-							width={750}
-							height={1000}
-						/>
-					</FlexRow>
-					<FlexRow className='h-full rounded-none bg-light-surface'>
-						<Image
-							alt=''
-							src={image_url.bottom! || "/file.svg"}
-							width={750}
-							height={1000}
-						/>
-					</FlexRow>
+					<TopPreview url={image_url.top!} />
+					<BottomPreview url={image_url.bottom!} />
 				</FlexColumn>
 			</FlexColumn>
 		</FlexColumn>
