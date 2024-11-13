@@ -2,7 +2,7 @@ import { HTMLProps, ReactNode } from "react";
 import { cn } from "../../utils/cn";
 
 interface FlexColumn {
-	children: ReactNode;
+	children?: ReactNode;
 	className?: string;
 	htmlProps?: Partial<HTMLProps<HTMLDivElement>>;
 }
