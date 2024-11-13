@@ -14,7 +14,7 @@ export default function FlexColumn({
 	return (
 		<div
 			className={cn(
-				"flex flex-col outline-1 overflow-y-auto bg-light-surface-surface-container-lowest rounded-lg",
+				"flex flex-col outline-2 overflow-y-auto bg-light-surface-surface-container-lowest rounded-lg",
 				className,
 			)}
 			{...htmlProps}
