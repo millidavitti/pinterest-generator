@@ -1,5 +1,8 @@
+import { Barlow_Condensed } from "next/font/google";
+
 import FlexRow from "@/components/layouts/flex_row";
 import { checkOverflow } from "@/utils/check-overflow";
+import { cn } from "@/utils/cn";
 import { Dispatch, RefObject, SetStateAction } from "react";
 
 interface TextBox {
@@ -22,7 +25,10 @@ export default function TextBox({
 				onClick={(e) => checkOverflow(e.currentTarget, setFontSize, fontSize)}
 			>
 				<p
-					className='w-full h-fit text-center cursor-pointer self-center'
+					className={cn(
+						'w-full h-fit text-center cursor-pointer self-center font-["Barlow Condensed"]',
+						barlowCondensed.className,
+					)}
 					style={{ fontSize: fontSize + "px" }}
 				>
 					{question}
@@ -31,3 +37,7 @@ export default function TextBox({
 		</FlexRow>
 	);
 }
+const barlowCondensed = Barlow_Condensed({
+	subsets: ["latin"],
+	weight: ["500"],
+});
