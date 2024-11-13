@@ -15,7 +15,6 @@ export default function PinGenerator() {
 					<UploadedImages />
 					<FlexColumn className='shrink-0'>
 						<TemplateHeader />
-						{/* Templates */}
 						<Templates />
 					</FlexColumn>
 				</FlexColumn>
