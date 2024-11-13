@@ -1,14 +1,24 @@
 "use client";
 import FlexColumn from "@/components/layouts/flex_col";
+import { ImageURLKeys } from "@/data/app";
+import useCaptureImageInterface from "@/hooks/interface/use-capture-image-interface";
 import { Image } from "lucide-react";
-export default function CaptureImage() {
+interface CaptureImage {
+	position: ImageURLKeys;
+}
+export default function CaptureImage({ position }: CaptureImage) {
+	const { captureImage } = useCaptureImageInterface();
+
 	return (
 		<>
 			<input
 				type='file'
 				className='hidden'
-				id='top-image'
+				id={position}
 				accept='.jpg, .jpeg, .png'
+				onChange={(e) =>
+					captureImage(Array.from(e.target.files!), e.currentTarget.id)
+				}
 			/>
 			<FlexColumn
 				className='outline-dashed p-3 text-center justify-center items-center hover:outline-light-primary h-full transition'
@@ -21,8 +31,8 @@ export default function CaptureImage() {
 							const files = [...e.dataTransfer.items].map(
 								(data) => data.getAsFile()!,
 							);
-							console.log(files);
-							// captureFiles(files);
+
+							captureImage(files, position);
 						}
 					},
 					onDragOver(e) {
@@ -44,7 +54,7 @@ export default function CaptureImage() {
 					<span
 						className='font-semibold active:scale-95 cursor-pointer'
 						onClick={() =>
-							(document.querySelector("#top-image") as HTMLElement)?.click()
+							(document.querySelector("#" + position) as HTMLElement)?.click()
 						}
 					>
 						Choose file
