@@ -1,18 +1,21 @@
-import Button from "@/components/button";
 import FlexColumn from "@/components/layouts/flex_col";
 import FlexRow from "@/components/layouts/flex_row";
-import { Wand } from "lucide-react";
 
 export default function PinPreview() {
 	return (
-		<FlexColumn className='h-full w-full'>
-			<FlexRow className='outline'>
+		<FlexColumn className='h-full w-full p-3 gap-3'>
+			{/* Header */}
+			<FlexRow className='shrink-0 p-3'>
 				<h3 className='text-xl font-semibold'>Pin Preview</h3>
-				<Button>
-					<Wand />
-					<span>Auto Fill</span>
-				</Button>
 			</FlexRow>
+			{/* Preview */}
+			<FlexColumn className='h-full rounded-none'>
+				{/* Pin */}
+				<FlexColumn className='outline h-full rounded-none'>
+					<FlexRow className='h-full rounded-none border-b-4 border-white bg-light-surface'></FlexRow>
+					<FlexRow className='h-full rounded-none bg-light-surface'></FlexRow>
+				</FlexColumn>
+			</FlexColumn>
 		</FlexColumn>
 	);
 }

@@ -1,7 +1,7 @@
 import { cn } from "../../utils/cn";
 import { HTMLProps, ReactNode } from "react";
 interface FlexRow {
-	children: ReactNode;
+	children?: ReactNode;
 	className?: string;
 	htmlProps?: Partial<HTMLProps<HTMLDivElement>>;
 }
