@@ -51,6 +51,7 @@ export default function TopPreview({ url }: TopPreview) {
 					question={question}
 					textBoxRef={textBoxRef}
 					fontSize={fontSize}
+					setFontSize={setFontSize}
 				/>
 			</FlexRow>
 		</>
