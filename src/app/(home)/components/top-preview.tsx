@@ -1,33 +1,38 @@
 import FlexRow from "@/components/layouts/flex_row";
 import { checkOverflow } from "@/utils/check-overflow";
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import TextBox from "./text-box";
+import {
+	selected_template_jotai,
+	text_box_default_font_jotai,
+} from "@/data/app";
+import { useAtom, useAtomValue } from "jotai";
+import { getLineCount } from "@/utils/get-line-count";
 
 interface TopPreview {
 	url: string;
 }
 export default function TopPreview({ url }: TopPreview) {
 	const textBoxRef = useRef<HTMLDivElement>(null);
-	const [fontSize, setFontSize] = useState(16);
-	const [question, setQuestion] = useState("");
+	const [text_box_default_font, text_box_default_font_setter] = useAtom(
+		text_box_default_font_jotai,
+	);
+	const selected_template = useAtomValue(selected_template_jotai);
 
 	useEffect(() => {
-		if (textBoxRef.current && question) {
-			checkOverflow(textBoxRef.current, setFontSize, fontSize);
+		if (textBoxRef.current) {
+			if (getLineCount(textBoxRef.current) > 2)
+				checkOverflow(
+					textBoxRef.current,
+					text_box_default_font_setter,
+					text_box_default_font,
+				);
 		}
-	}, [question, fontSize]);
+	}, [text_box_default_font]);
 
 	return (
 		<>
-			<input
-				type='text'
-				value={question}
-				onChange={(e) => {
-					setQuestion(e.currentTarget.value);
-					setFontSize(16);
-				}}
-			/>
 			<FlexRow className='relative h-full rounded-none border-b-4 border-white bg-light-surface overflow-visible'>
 				{url ? (
 					<Image
@@ -47,12 +52,7 @@ export default function TopPreview({ url }: TopPreview) {
 					/>
 				)}
 				{/* Text Box */}
-				<TextBox
-					question={question}
-					textBoxRef={textBoxRef}
-					fontSize={fontSize}
-					setFontSize={setFontSize}
-				/>
+				<TextBox textBoxRef={textBoxRef} />
 			</FlexRow>
 		</>
 	);
