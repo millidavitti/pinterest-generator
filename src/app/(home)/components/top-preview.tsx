@@ -3,11 +3,8 @@ import { checkOverflow } from "@/utils/check-overflow";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 import TextBox from "./text-box";
-import {
-	selected_template_jotai,
-	text_box_default_font_jotai,
-} from "@/data/app";
-import { useAtom, useAtomValue } from "jotai";
+import { text_box_default_font_jotai } from "@/data/app";
+import { useAtom } from "jotai";
 import { getLineCount } from "@/utils/get-line-count";
 
 interface TopPreview {
@@ -18,7 +15,6 @@ export default function TopPreview({ url }: TopPreview) {
 	const [text_box_default_font, text_box_default_font_setter] = useAtom(
 		text_box_default_font_jotai,
 	);
-	const selected_template = useAtomValue(selected_template_jotai);
 
 	useEffect(() => {
 		if (textBoxRef.current) {
@@ -29,7 +25,7 @@ export default function TopPreview({ url }: TopPreview) {
 					text_box_default_font,
 				);
 		}
-	}, [text_box_default_font]);
+	}, [text_box_default_font, text_box_default_font_setter]);
 
 	return (
 		<>

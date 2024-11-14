@@ -1,7 +1,7 @@
 export function processTemplate(template: string, selectedTopic: string) {
 	const regex =
 		/<GreenHighlight>(.*?)<\/GreenHighlight>|<Highlight>(.*?)<\/Highlight>|([^<]+)/g;
-	let result = [];
+	const result = [];
 	let match;
 
 	while ((match = regex.exec(template)) !== null) {
