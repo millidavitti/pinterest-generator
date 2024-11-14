@@ -11,9 +11,9 @@ export default function PinGenerator() {
 		<FlexColumn className='w-full p-3 bg-transparent gap-3'>
 			<PinGeneratorHeader />
 			<FlexRow className='gap-3 bg-transparent h-full'>
-				<FlexColumn className='w-full h-full'>
+				<FlexColumn className='w-full h-full relative'>
 					<UploadedImages />
-					<FlexColumn className='shrink-0'>
+					<FlexColumn className='shrink-0 h-full'>
 						<TemplateHeader />
 						<Templates />
 					</FlexColumn>
