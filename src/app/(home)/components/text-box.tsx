@@ -3,35 +3,68 @@ import { Barlow_Condensed } from "next/font/google";
 import FlexRow from "@/components/layouts/flex_row";
 import { checkOverflow } from "@/utils/check-overflow";
 import { cn } from "@/utils/cn";
-import { Dispatch, RefObject, SetStateAction } from "react";
-
+import { RefObject } from "react";
+import GreenHighlight from "./green-highlight";
+import Highlight from "./highlight";
+import { useAtom, useAtomValue } from "jotai";
+import {
+	selected_template_jotai,
+	template_color_jotai,
+	text_box_default_font_jotai,
+} from "@/data/app";
+import { v4 as uuidv4 } from "uuid";
 interface TextBox {
-	question: string;
 	textBoxRef: RefObject<HTMLDivElement>;
-	fontSize: number;
-	setFontSize: Dispatch<SetStateAction<number>>;
 }
-export default function TextBox({
-	question,
-	textBoxRef,
-	fontSize,
-	setFontSize,
-}: TextBox) {
+export default function TextBox({ textBoxRef }: TextBox) {
+	const selected_template = useAtomValue(selected_template_jotai);
+	const template_color = useAtomValue(template_color_jotai);
+	const [text_box_default_font, text_box_default_font_setter] = useAtom(
+		text_box_default_font_jotai,
+	);
+
 	return (
-		<FlexRow className='p-1 absolute inset-x-0 mx-auto -bottom-4 bg-[#004aad] outline z-20 outline-4 outline-white h-14 w-[70%] shrink-0 rounded-none border-r text-white font-bold'>
+		<FlexRow
+			className={cn(
+				"p-1 absolute inset-x-0 mx-auto -bottom-4 outline z-20 outline-4 outline-white min-h-14 w-[70%] shrink-0 rounded-none border-r text-white font-bold",
+				"bg-[" + template_color + "]",
+			)}
+		>
 			<div
 				className='h-full flex'
 				ref={textBoxRef}
-				onClick={(e) => checkOverflow(e.currentTarget, setFontSize, fontSize)}
+				onClick={(e) =>
+					checkOverflow(
+						e.currentTarget,
+						text_box_default_font_setter,
+						text_box_default_font,
+					)
+				}
 			>
 				<p
+					id='text-box'
 					className={cn(
-						'w-full h-fit text-center cursor-pointer self-center font-["Barlow Condensed"]',
+						"w-full h-fit text-center cursor-pointer self-center uppercase",
 						barlowCondensed.className,
 					)}
-					style={{ fontSize: fontSize + "px" }}
+					style={{ fontSize: text_box_default_font + "px" }}
 				>
-					{question}
+					{selected_template?.map((bits) => {
+						if ("white" in bits)
+							return <span key={uuidv4()}>{bits.white}</span>;
+						else if ("green" in bits)
+							return (
+								<GreenHighlight key={uuidv4()}>
+									{" " + bits.green + " "}
+								</GreenHighlight>
+							);
+						else if ("highlight" in bits)
+							return (
+								<Highlight key={uuidv4()}>
+									{" " + bits.highlight + " "}
+								</Highlight>
+							);
+					})}
 				</p>
 			</div>
 		</FlexRow>

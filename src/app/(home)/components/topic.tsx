@@ -11,7 +11,7 @@ export default function Topic({ topic }: Topic) {
 	const selected_topic_setter = useSetAtom(selected_topic_jotai);
 
 	return (
-		<FlexRow className='group p-3 bg-light-secondary-secondary-container justify-between cursor-pointer font-semibold'>
+		<FlexRow className='group p-3 bg-light-secondary-secondary-container justify-between cursor-pointer font-semibold shrink-0'>
 			<FlexRow
 				className='w-full bg-transparent active:scale-95 transition'
 				htmlProps={{

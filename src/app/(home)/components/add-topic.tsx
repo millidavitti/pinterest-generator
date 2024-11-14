@@ -38,6 +38,7 @@ export default function AddTopic() {
 					<input
 						type='text'
 						value={topic}
+						placeholder='Add topics here'
 						onChange={(e) => setTopic(e.currentTarget.value)}
 						ref={inputRef}
 						className='outline-1 w-full rounded-lg p-2 outline-light-secondary border border-1 border-light-primary'
