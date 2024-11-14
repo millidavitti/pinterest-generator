@@ -5,12 +5,6 @@ export function checkOverflow(
 	setRem: (value: number) => void,
 	rem: number,
 ) {
-	const isOverflowingVertically = element.scrollHeight > element.clientHeight;
-	if (isOverflowingVertically || getLineCount(element.querySelector("p")!) > 2)
-		setRem(rem - 1);
-	else if (
-		!isOverflowingVertically &&
-		getLineCount(element.querySelector("p")!) < 2
-	)
-		setRem(rem + 1);
+	if (getLineCount(element.querySelector("p")!) > 2) setRem(rem - 1);
+	else if (getLineCount(element.querySelector("p")!) < 2) setRem(rem + 2);
 }
