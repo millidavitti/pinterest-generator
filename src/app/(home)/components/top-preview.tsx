@@ -29,13 +29,13 @@ export default function TopPreview({ url }: TopPreview) {
 
 	return (
 		<>
-			<FlexRow className='relative h-full rounded-none border-b-4 border-white bg-light-surface overflow-visible'>
+			<FlexRow className='relative h-full rounded-none bg-light-surface overflow-visible'>
 				{url ? (
 					<Image
 						alt='top-preview'
 						src={url}
-						width={750}
-						height={1000}
+						width={1000}
+						height={1500}
 						className='object-cover'
 					/>
 				) : (
