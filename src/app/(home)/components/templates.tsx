@@ -17,7 +17,7 @@ export default function Templates() {
 
 	return (
 		<FlexColumn className='p-3 gap-3 h-full no-scrollbar'>
-			{processedTemplates.map((template, i) => (
+			{processedTemplates.map((template) => (
 				<Template template={template} key={uuidv4()}>
 					{template.map((bits) => {
 						if (bits.white) return <span key={uuidv4()}>{bits.white}</span>;

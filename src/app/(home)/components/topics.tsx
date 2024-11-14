@@ -8,7 +8,7 @@ export default function Topics() {
 	const topics = useAtomValue(topics_jotai);
 	return (
 		<FlexColumn className='gap-3'>
-			{topics.map((topic, i) => (
+			{topics.map((topic) => (
 				<Topic key={uuidv4()} topic={topic} />
 			))}
 		</FlexColumn>
