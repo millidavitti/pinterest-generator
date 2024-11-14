@@ -11,10 +11,11 @@ export default function CTA() {
 	return (
 		<FlexRow
 			className={cn(
-				"font-bold w-fit text-white shrink-0 absolute bottom-6 inset-x-0 mx-auto p-3 rounded-none ",
+				"font-bold w-fit text-6 text-white shrink-0 absolute bottom-6 inset-x-0 mx-auto p-3 rounded-none ",
 				poppins.className,
 				"bg-[" + template_color + "]",
 			)}
+			htmlProps={{ id: "cta" }}
 		>
 			START QUIZ <ChevronRight stroke='white' />
 		</FlexRow>

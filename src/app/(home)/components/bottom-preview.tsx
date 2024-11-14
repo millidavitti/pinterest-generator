@@ -7,14 +7,14 @@ interface BottomPreview {
 }
 export default function BottomPreview({ url }: BottomPreview) {
 	return (
-		<FlexRow className='relative h-full rounded-none'>
-			<FlexRow className='rounded-none bg-light-surface'>
+		<FlexRow className='relative h-full rounded-none no-scrollbar'>
+			<FlexRow className='rounded-none bg-light-surface no-scrollbar'>
 				{url ? (
 					<Image
 						alt='bottom-preview'
 						src={url}
-						width={750}
-						height={1000}
+						width={1000}
+						height={1500}
 						className='object-cover'
 					/>
 				) : (
@@ -22,7 +22,7 @@ export default function BottomPreview({ url }: BottomPreview) {
 						alt='bottom-preview'
 						src={"/placeholder.png"}
 						width={750}
-						height={1000}
+						height={1500}
 						className='object-contain'
 					/>
 				)}
