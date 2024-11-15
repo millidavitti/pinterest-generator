@@ -8,14 +8,14 @@ export default function Pin() {
 
 	return (
 		<>
-			<FlexColumn className='outline rounded-none no-scrollbar h-[1500px]'>
+			<FlexColumn className='outline rounded-none no-scrollbar h-full shrink-0'>
 				<TopPreview url={image_url.top!} />
 				<div className='w-full h-2 shrink-0 bg-white'></div>
 				<BottomPreview url={image_url.bottom!} />
 			</FlexColumn>
 			{/* To Print */}
 			<FlexColumn
-				className='outline rounded-none -z-40 absolute shrink-0 no-scrollbar w-[1000px] h-[1500px] hidden'
+				className='rounded-none shrink-0 no-scrollbar w-[1000px] h-[1500px]'
 				htmlProps={{ id: "pin" }}
 			>
 				<TopPreview url={image_url.top!} />

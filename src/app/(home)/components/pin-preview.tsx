@@ -11,7 +11,7 @@ export default function PinPreview() {
 				<h3 className='text-xl font-semibold'>Pin Preview</h3>
 			</FlexRow>
 			{/* Preview */}
-			<FlexColumn className='h-full rounded-none'>
+			<FlexColumn className='h-full rounded-none overflow-clip'>
 				<Pin />
 			</FlexColumn>
 		</FlexColumn>

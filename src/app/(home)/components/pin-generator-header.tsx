@@ -13,7 +13,7 @@ export default function PinGeneratorHeader() {
 	return (
 		<FlexRow className='justify-between items-center bg-transparent h-fit shrink-0'>
 			<FlexColumn className='bg-transparent'>
-				<h2 className='text-2xl font-bold'>Pinterest Generator</h2>
+				<h2 className='text-2xl font-bold'>Pin Generator</h2>
 				<p className='text-light-surface-on-surface'>
 					Create beautiful Pins in seconds
 				</p>
@@ -22,8 +22,6 @@ export default function PinGeneratorHeader() {
 			<Button
 				onClick={() => {
 					const node = document.getElementById("pin")!;
-					node.style.display = "flex";
-
 					domtoimage
 						.toBlob(node, {
 							adjustClonedNode: adjustClone,
@@ -47,11 +45,9 @@ export default function PinGeneratorHeader() {
 function adjustClone(node: HTMLElement, clone: HTMLElement, after: boolean) {
 	if (after && clone.id === "text-box-container") {
 		clone.style.transform = "scale(2.3)";
-	}
-	if (!after && node.id === "cta") {
+	} else if (!after && node.id === "cta") {
 		node.style.bottom = "120px";
-	}
-	if (after && node.id === "cta") {
+	} else if (after && node.id === "cta") {
 		node.style.transform = "scale(2.3)";
 	}
 
