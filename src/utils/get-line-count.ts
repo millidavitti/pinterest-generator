@@ -12,6 +12,6 @@ export function getLineCount(element: HTMLElement) {
 	const totalHeight = clone.clientHeight;
 
 	document.body.removeChild(clone);
-	console.log(totalHeight / lineHeight);
-	return totalHeight / lineHeight;
+	console.log(Math.round(totalHeight / lineHeight));
+	return Math.round(totalHeight / lineHeight);
 }

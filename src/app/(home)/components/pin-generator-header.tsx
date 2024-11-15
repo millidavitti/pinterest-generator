@@ -6,6 +6,7 @@ import { Download } from "lucide-react";
 import domtoimage from "dom-to-image-more";
 import { useAtomValue } from "jotai";
 import { selected_topic_jotai } from "@/data/app";
+import { saveAs } from "file-saver";
 let id = 1;
 export default function PinGeneratorHeader() {
 	const selected_topic = useAtomValue(selected_topic_jotai);
@@ -17,31 +18,29 @@ export default function PinGeneratorHeader() {
 					Create beautiful Pins in seconds
 				</p>
 			</FlexColumn>
-			<a id='download'>
-				<Button
-					onClick={() => {
-						const node = document.getElementById("pin")!;
-						const download = document.getElementById(
-							"download",
-						)! as HTMLAnchorElement;
-						node.style.display = "flex";
 
-						domtoimage
-							.toPng(node, { adjustClonedNode: adjustClone })
-							.then(function (dataUrl: string) {
-								download.href = dataUrl;
-								download.download =
-									selected_topic.replaceAll(" ", "_").toLowerCase() +
-									id +
-									".png";
-								id++;
-							});
-					}}
-				>
-					<Download />
-					<span>Download Pin</span>
-				</Button>
-			</a>
+			<Button
+				onClick={() => {
+					const node = document.getElementById("pin")!;
+					node.style.display = "flex";
+
+					domtoimage
+						.toBlob(node, {
+							adjustClonedNode: adjustClone,
+						})
+						.then((blob: Blob) => {
+							saveAs(
+								blob,
+								selected_topic.replaceAll(" ", "_").toLowerCase() + id + ".png",
+							);
+						});
+
+					id++;
+				}}
+			>
+				<Download />
+				<span>Download Pin</span>
+			</Button>
 		</FlexRow>
 	);
 }
@@ -49,8 +48,12 @@ function adjustClone(node: HTMLElement, clone: HTMLElement, after: boolean) {
 	if (after && clone.id === "text-box-container") {
 		clone.style.transform = "scale(2.3)";
 	}
-	if (!after && clone.id === "cta") {
-		clone.style.transform = "scale(2)";
+	if (!after && node.id === "cta") {
+		node.style.bottom = "120px";
 	}
+	if (after && node.id === "cta") {
+		node.style.transform = "scale(2.3)";
+	}
+
 	return clone;
 }

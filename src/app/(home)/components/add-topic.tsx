@@ -27,7 +27,7 @@ export default function AddTopic() {
 			</FlexRow>
 			{isNewTopic && (
 				<form
-					action=''
+					className='outline-1 outline outline-light-primary rounded-lg gap-3'
 					onSubmit={(e) => {
 						e.preventDefault();
 						if (!topic) throw toast.info("Provide a topic");
@@ -41,7 +41,7 @@ export default function AddTopic() {
 						placeholder='Add topics here'
 						onChange={(e) => setTopic(e.currentTarget.value)}
 						ref={inputRef}
-						className='outline-1 w-full rounded-lg p-2 outline-light-secondary border border-1 border-light-primary'
+						className=' w-full p-2 rounded-lg outline-light-secondary'
 					/>
 				</form>
 			)}
