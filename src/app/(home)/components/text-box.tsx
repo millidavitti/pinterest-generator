@@ -3,7 +3,6 @@ import { Barlow_Condensed } from "next/font/google";
 import FlexRow from "@/components/layouts/flex_row";
 import { checkOverflow } from "@/utils/check-overflow";
 import { cn } from "@/utils/cn";
-import { RefObject } from "react";
 import GreenHighlight from "./green-highlight";
 import Highlight from "./highlight";
 import { useAtom, useAtomValue } from "jotai";
@@ -13,10 +12,8 @@ import {
 	text_box_default_font_jotai,
 } from "@/data/app";
 import { v4 as uuidv4 } from "uuid";
-interface TextBox {
-	textBoxRef: RefObject<HTMLDivElement>;
-}
-export default function TextBox({ textBoxRef }: TextBox) {
+
+export default function TextBox() {
 	const selected_template = useAtomValue(selected_template_jotai);
 	const template_color = useAtomValue(template_color_jotai);
 	const [text_box_default_font, text_box_default_font_setter] = useAtom(
@@ -33,7 +30,6 @@ export default function TextBox({ textBoxRef }: TextBox) {
 		>
 			<div
 				className='h-full flex'
-				ref={textBoxRef}
 				onClick={(e) => {
 					checkOverflow(
 						e.currentTarget,
