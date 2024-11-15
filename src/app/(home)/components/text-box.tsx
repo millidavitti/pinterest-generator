@@ -26,7 +26,7 @@ export default function TextBox({ textBoxRef }: TextBox) {
 	return (
 		<FlexRow
 			className={cn(
-				"p-1 absolute inset-x-0 mx-auto -bottom-4 outline z-20 outline-4 outline-white min-h-14 w-[70%] max-w-80 shrink-0 rounded-none border-r  text-white font-bold no-scrollbar",
+				"p-1 absolute inset-x-0 mx-auto -bottom-4 outline z-20 outline-4 outline-white min-h-14 w-60 shrink-0 rounded-none text-white font-bold no-scrollbar",
 				"bg-[" + template_color + "]",
 			)}
 			htmlProps={{ id: "text-box-container" }}
@@ -34,13 +34,14 @@ export default function TextBox({ textBoxRef }: TextBox) {
 			<div
 				className='h-full flex'
 				ref={textBoxRef}
-				onClick={(e) =>
+				onClick={(e) => {
 					checkOverflow(
 						e.currentTarget,
 						text_box_default_font_setter,
 						text_box_default_font,
-					)
-				}
+						e.ctrlKey,
+					);
+				}}
 			>
 				<p
 					id='text-box'
